@@ -1,0 +1,11 @@
+.policy {
+    width: 80%;
+    text-align: justify;
+    margin: 5% auto;
+}
+
+.policy .title{
+    margin-bottom: 5%;
+    font-size: 150%;
+    font-weight: bold;
+}

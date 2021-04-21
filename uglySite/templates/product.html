@@ -1,0 +1,225 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/product.css' %}">
+{% endblock extra_css %}
+
+{% block content %}
+<div class="product">
+    <div class="PI">
+        <ul>
+            <li class="image-selected" id="li0" onClick="makeMain(this, 0)"><span class="helper"></span><img class="secondary" id="img0" src="{{product.mainImage.url}}"></li>
+
+            {% if product.custom %}
+            <li class="" id="li1" onClick="makeMain(this, 1)"><span class="helper"></span><img class="secondary" id="img1" src="{{product.backImage.url}}"></li>
+            {% else %}
+
+                {% for image in gallery %}
+                <li id="li{{forloop.counter}}" onClick="makeMain(this, {{forloop.counter}})"><span class="helper"></span><img class="secondary" id="img{{forloop.counter}}" src="{{image.image.url}}"></li>
+                {% endfor %}
+
+            {% endif %}
+
+        </ul>
+        <div class="main">
+            <span class="helper"></span>
+            <img id="main-image" src="{{product.mainImage.url}}">
+        </div>
+
+        <div id="zoom-indicator" style="display:none;"></div>
+        <div id="zoom-area" style="background-image: url('{{ product.mainImage.url }}');background-color: #000; display: none;"></div>
+    </div>
+    <div class="PT">
+        <ul class="stars">    
+            {% if product.rating > 0.00 %}
+                {% if product.rating > 1.00 %}
+                    {% if product.rating > 2.00 %}
+                        {% if product.rating > 3.00 %}
+                            {% if product.rating > 4.00 %}
+                            <li><img class="gold" src="{% static 'images/emptyStar.png' %}"></li>
+                            <li><img class="gold" src="{% static 'images/emptyStar.png' %}"></li>
+                            <li><img class="gold" src="{% static 'images/emptyStar.png' %}"></li>
+                            <li><img class="gold" src="{% static 'images/emptyStar.png' %}"></li>
+                            <li><img class="gold" src="{% static 'images/emptyStar.png' %}"></li>
+                            {% else %}
+                            <li><img class="gold" src="{% static 'images/emptyStar.png' %}"></li>
+                            <li><img class="gold" src="{% static 'images/emptyStar.png' %}"></li>
+                            <li><img class="gold" src="{% static 'images/emptyStar.png' %}"></li>
+                            <li><img class="gold" src="{% static 'images/emptyStar.png' %}"></li>
+                            <li><img class="gray" src="{% static 'images/emptyStar.png' %}"></li>
+                            {% endif %}
+                        {% else %}
+                        <li><img class="gold" src="{% static 'images/emptyStar.png' %}"></li>
+                        <li><img class="gold" src="{% static 'images/emptyStar.png' %}"></li>
+                        <li><img class="gold" src="{% static 'images/emptyStar.png' %}"></li>
+                        <li><img class="gray" src="{% static 'images/emptyStar.png' %}"></li>
+                        <li><img class="gray" src="{% static 'images/emptyStar.png' %}"></li>
+                        {% endif %}
+                    {% else %}
+                    <li><img class="gold" src="{% static 'images/emptyStar.png' %}"></li>
+                    <li><img class="gold" src="{% static 'images/emptyStar.png' %}"></li>
+                    <li><img class="gray" src="{% static 'images/emptyStar.png' %}"></li>
+                    <li><img class="gray" src="{% static 'images/emptyStar.png' %}"></li>
+                    <li><img class="gray" src="{% static 'images/emptyStar.png' %}"></li>
+                    {% endif %}
+                {% else %}
+                <li><img class="gold" src="{% static 'images/emptyStar.png' %}"></li>
+                <li><img class="gray" src="{% static 'images/emptyStar.png' %}"></li>
+                <li><img class="gray" src="{% static 'images/emptyStar.png' %}"></li>
+                <li><img class="gray" src="{% static 'images/emptyStar.png' %}"></li>
+                <li><img class="gray" src="{% static 'images/emptyStar.png' %}"></li>
+                {% endif %}                    
+                <div class="numOfRev">({{numOfRev}})</div>
+            {% endif %}
+        </ul>
+        <div class="name">{{product.name}}</div>
+        <div class="PR">${{product.price}}</div>
+        <div class="colorPicker"><span>Click para seleccionar el color del producto:</span><input type="color" id="COLPICK" value="#000000"></div>
+
+
+        
+            {% if customProduct %}
+            <div>
+                <form id="imagesForm" method="POST">
+                {% csrf_token %}
+                    <div class="imageUploader">
+                        <div class="title">Imágenes en calcetín:</div>
+                        <div class="order">- De preferencia, súbelas con fondo transparente y una medida de 1000 x 4500 px.</div>
+                        <div class="tip">Tip: Edita tus diseños en canva antes de subirlos.</div>
+                        <div class="myR">
+                            <span class="helper"></span>
+                            <table class="files">
+                                {{imagesForm.as_table}}
+                            </table>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            {% endif %}
+        
+
+
+        <div class="cart">
+            <span class="helper"></span>
+            <div class="quantity">
+                <span class="helper"></span>
+                <img id="qLess" src="{% static 'images/less.svg' %}">
+                {{cartForm}}
+                <img id="qMore" src="{% static 'images/more.svg' %}">
+            </div>
+            <button type="submit" id="addtocart">
+                <span class="helper"></span>
+                <div>Añadir al carrito</div>
+                <img src="{% static 'images/carro.svg' %}">
+            </button>
+        </div>
+
+        
+        <div class="extra">
+            <div class="selector">
+                <div id="description" style="font-weight:bold;">Descripción: </div>
+                <div id="reviews">Valoración y reseñas:</div>
+            </div>
+
+            <div class="D" id="D">
+                {{product.description}}
+                <img src="{% static 'images/pagos.png' %}">
+            </div>
+            <div class="V" id="V" style="display:none;">
+
+                
+                <div class="rateProd">
+                    {% if product.rating > 0 %}
+                    
+                    <div class="noRev">Deja una reseña. <span class="eighty">Tu correo no será visible.</span></div>
+                    {% else %}
+                    <div class="noRev">Aún no hay reseñas. Sé el primero en dejar una! <span class="eighty">Tu correo no será visible.</span></div>
+                    {% endif %}
+                    <form class="revForm" method="POST">
+                        {% csrf_token %}
+                        <div class="setStars">
+                            <span>Valoración *:</span>
+                            <img id="setStar1" class="gray" src="{% static 'images/emptyStar.png' %}">
+                            <img id="setStar2" class="gray" src="{% static 'images/emptyStar.png' %}">
+                            <img id="setStar3" class="gray" src="{% static 'images/emptyStar.png' %}">
+                            <img id="setStar4" class="gray" src="{% static 'images/emptyStar.png' %}">
+                            <img id="setStar5" class="gray" src="{% static 'images/emptyStar.png' %}">
+                        </div>
+                        
+                        <table class="formTable">{{reviewForm.as_table}}</table>
+                        <input type="number" name="rating" step="0.1" id="id_rating" style="display:none;">
+                        <button type="submit">Submit</button>
+                    </form>
+                </div>
+
+                {% if numOfRev > 0 %}
+                <div class="reviews">
+                    {% for rev in reviews %}
+                        <div class="review">
+                            
+                            <div>
+                                <span class="reviewer">{{rev.reviewer}}</span>
+                                <div class="starss">
+                                    <img class="gold" src="{% static 'images/emptyStar.png' %}"> 
+                                    <span class="helper"> </span>
+                                    <div class="rating">{{rev.rating}}</div>
+                                </div>
+                            </div>
+
+                            <div class="rev">{{rev.review}}</div>
+                        </div>
+                    {% endfor %}
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+
+{% if not product.custom %}
+<div class="relProd">
+    <hr>
+    <div class="relText">Productos relacionados: </div>
+    <div class="grid">
+        {% for prod in relProd %}
+        <div class="product" id="product{{prod.id}}">
+            <a href="/product{{prod.id}}"><img src="{{prod.mainImage.url}}"></a>
+            <div class="PT2">
+                <div class="name">{{prod.name}}</div>
+                <div class="price">${{prod.price}}</div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endif %}
+
+
+<canvas id="ghost" width="1000" height="1000" style="display: none;"></canvas>
+<canvas id="ghost-front" width="1000" height="4500" style="display: none;"></canvas>
+<canvas id="ghost-back" width="1000" height="4500" style="display: none;"></canvas>
+<img id="ghost-img-front" style="display: none;">
+<img id="ghost-img-back" style="display: none;">
+<img id="ghost-img" style="display: none;">
+<img id="ghost-img1" style="display: none;">
+
+{% endblock content %}
+
+{% block extra_js %}
+<script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/gh/jquery-form/form@4.3.0/dist/jquery.form.min.js" integrity="sha384-qlmct0AOBiA2VPZkMY3+2WqkHtIQ9lSdAsAn5RUJD/3vA5MKDgSGcdmIv4ycVxyn" crossorigin="anonymous"></script>
+<script type="text/javascript">
+    var prodNum = "{{product.id}}";
+    var prodName = "{{product.name}}";
+    var prodPrice = "{{product.price}}";
+    var page_url = "{{ request.path }}";
+    var customProd = "{{product.custom}}";
+    {% if product.custom %}
+    var uuid = "{{uuid}}";
+    var new_uuid = "{{uuid}}";
+    {% endif %}
+</script>
+<script type="text/javascript" src="{% static 'js/product.js' %}"></script>
+
+{% endblock extra_js %}

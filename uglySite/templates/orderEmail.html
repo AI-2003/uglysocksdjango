@@ -1,0 +1,39 @@
+<div class="body" style="width: 100%;">
+    <div class="intro" style="background-color: #2E5D4E;">
+        <div style="padding: 50px;padding-bottom: 25px; width:100vw; text-align:left;">
+            <span style="display: inline-block;height: 100%;vertical-align: middle;"></span>
+            <img src="cid:white_logo" style="height: 100px; width:100px; vertical-align: middle; padding: 50px; padding-bottom: 25px;">
+            <div class="greeting" style="color: #FFF; font-weight: bold;font-size: 200%; vertical-align:middle; padding:50px; padding-top: 25px;">Hola, {{name}}.</div>
+        </div>
+        
+        <div class="thanks" style="color: #FFF;padding: 50px;padding-top: 25px;">Muchas gracias por haber comprado en Ugly Socks.<br>De parte de todos, te lo agradecemos mucho.</div>
+    </div>
+    <div class="order" style="">
+        <div class="title" style="margin: 50px;font-size: 150%;">Aquí te dejamos los detalles tu orden:</div>
+        <div class="element" style="margin: 20px;">Identificador de orden: {{order.id}}</div>
+        <div class="element" style="margin: 20px;">Total: ${{order.total|floatformat:2}}</div>
+        <div class="element" style="margin: 20px; margin-bottom: 10px;">Productos ordenados:</div>
+        {% for productKey, productVal in order.products.items %}
+            <div style="margin: 40px; margin-bottom:10px;">{{productVal.name}}:</div>
+            {% if productKey != "totalPrice" %}
+                {% if not productVal.custom %}
+                    {% for colorKey, colorVal in productVal.variations.items %}
+                        <div class="element" style="margin: 5px 60px;">- {{colorVal}} x {{colorKey}}</div>
+                    {% endfor %}
+                {% else %}
+                    {% for uuid, uuidVal in productVal.variations.items %}
+                    <div class="element" style="margin: 5px 60px;">- {{uuid}}: </div>
+                        {% for colorKey, colorVal in uuidVal.items %}
+                            {% if colorKey != "numOfProd" %}
+                                <div class="element" style="margin: 5px 80px;">- {{colorVal}} x {{colorKey}}</div>
+                            {% endif %}
+                        {% endfor %}
+                    {% endfor %}
+                {% endif %}
+            {% endif %}
+        {% endfor %}
+    </div>
+
+    <div style="margin:50px; margin-left:20px;">En caso de cualquier duda, favor de escribir a <a href="mailto:contacto@ibarraransoftware.com">contacto@ibarraransoftware.com</a>.</div>
+    <h1 style="margin: 50px 0; padding: 50px; background-color: #2E5D4E;">Muchas gracias por tu compra!<br><br>Te esperamos pronto!</div>
+</div>

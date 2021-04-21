@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/message.css' %}">
+{% endblock extra_css %}
+
+{% block content %}
+<div class="content">
+    {{message}}
+</div>
+<div class="descrip">{{descrip}}</div>
+<div class="help">
+    En caso de cualquier pregunta, aclaramiento o caso que se presente, escribir a <a href="mailto:contacto@ibarraransoftware.com">contacto@ibarraransoftware.com</a>
+</div>
+{% endblock content %}

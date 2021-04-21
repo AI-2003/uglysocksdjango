@@ -1,0 +1,155 @@
+@media screen and (min-width: 721px){
+    .intro .color {
+        background-color: #2E5D4E;
+        width: 100%;
+        height: 10vh;
+    }
+    
+    .intro ul {
+        margin: 01% 4%;
+        padding: 0;
+    }
+    
+    .intro ul .title {
+        font-size: 250%;
+        margin-bottom: 1%;
+        font-weight: bold;
+    }
+    
+    
+    .intro .waves {
+        width: 100%;
+    }
+
+    .intro .socks-gif, #li-logo {
+        display: none;
+    }
+    
+    .categoriesPresentation {
+        margin: 4% 0 0 4%;
+        font-size: 150%;
+    }
+    
+    .categories {
+        max-width: 90%;
+        margin: 0 auto;
+    }
+    
+    .category {
+        display: inline-block;
+        width: 39%;
+        margin: 2% 5%;
+        position: relative;
+    }
+    
+    .category .text {
+        color: #FFF;
+        position: absolute;    
+        left: 50%;
+        transform: translateX(-50%);
+        top: 20%;
+        letter-spacing: 0.5vw;
+        font-size: 150%;
+        font-weight: bold;
+    
+    }
+    
+    .category .categoryButton {
+        color: #FFF; 
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        bottom: 10%;
+        padding: 3% 5.5%;
+        background-color: #D00000;
+        cursor: pointer;
+    }
+    
+    .category img {
+        height: 100%;
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 720px){
+    .intro {
+        margin: 7.5%;
+        position: relative;
+    }
+
+    .intro .color {
+        background-color: #2E5D4E;
+        width: 100%;
+        height: 10vh;
+    }
+    
+    .intro ul {
+        margin: 0%;
+        padding: 0;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+        text-align: center;
+        color: #FFF;
+    }
+    
+    .intro ul .title {
+        margin-bottom: 10%;
+        font-weight: bold;
+    }
+    
+    
+    .intro .waves {
+        width: 100%;
+        display: none;
+    }
+
+    .intro .socks-gif {
+        width: 100%;
+    }
+    
+    .categoriesPresentation {
+        margin: 5% 0 0 7.5%;
+        font-size: 150%;
+    }
+    
+    .categories {
+        max-width: 75%;
+        margin: 0 auto;
+    }
+    
+    .category {
+        display: inline-block;
+        width: 100%;
+        margin: 10% 0%;
+        position: relative;
+    }
+    
+    .category .text {
+        color: #FFF;
+        position: absolute;    
+        left: 50%;
+        transform: translateX(-50%);
+        top: 20%;
+        letter-spacing: 2vw;
+        font-weight: bold;
+    
+    }
+    
+    .category .categoryButton {
+        color: #FFF;
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        bottom: 10%;
+        padding: 3% 5.5%;
+        background-color: #D00000;
+        cursor: pointer;
+    }
+    
+    .category img {
+        height: 100%;
+        width: 100%;
+    }
+}

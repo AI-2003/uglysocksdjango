@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/search.css' %}">
+{% endblock extra_css %}
+
+{% block content %}
+
+    <div class="searchTitle">{{searchName}}</div>
+    <div class="productList">
+        {% if not listLength > 0 %}
+            <div class="notFound">{{notFound}}</div>
+        {% endif %}
+        {% for product in productList %}
+        <div class="product" id="product{{product.id}}">
+            <a href="/product{{product.id}}"><img src="{{product.mainImage.url}}"></a>
+            <div class="PT">
+                <div class="name">{{product.name}}</div>
+                <div class="price">${{product.price}}</div>
+            </div>
+        </div>
+        {% endfor %}
+
+    </div>
+{% endblock content %}

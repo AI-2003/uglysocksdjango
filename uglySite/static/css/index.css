@@ -1,0 +1,655 @@
+﻿@media screen and (min-width: 721px){
+	@font-face {
+		font-family: Manrope;
+		src: url('/static/fonts/Manrope-Regular.ttf');
+	}
+	
+	* {
+		font-family: Manrope;
+	}
+	
+	body {
+		margin: 0; 
+		max-width: 100%;
+		overflow-x: hidden;
+	}
+	
+	a {
+		text-decoration: none;
+	}
+	
+	ul {
+		list-style-type: none;
+	}
+	
+	input:focus,
+	select:focus,
+	textarea:focus,
+	button:focus, *:focus {
+		outline: none;
+	}
+	
+	.page-container {
+		position: relative;
+		min-height: 100vh;
+	}
+	
+	.menu {
+		height:7%;
+		width: 100%;
+		position: fixed;
+		background-color:#2E5D4E;
+		z-index: 1;
+	}
+	
+	.toolbar {
+		height: 100%;
+		width: 100%;
+		position: relative;
+	}
+	
+	.helper {
+		display: inline-block;
+		height: 100%;
+		vertical-align: middle;
+	}
+	
+	#logo {
+		max-height: 80%;
+		vertical-align: middle;
+		margin-left: 3%;
+		cursor: pointer;
+	}
+	
+	
+	.actions {
+		position: absolute;
+		right: 0%;
+		top: 0%;
+		height: 100%;
+		width: 25%;
+	}
+	
+	.verticalSeparator {
+		height: 60%;
+		display: inline-block;
+		vertical-align: middle;
+		border-left: 2px solid rgb(255,255,255,0.7);
+		margin-right: 15%;
+		width: 1%;
+	}
+	
+	.searchBox{
+		display: inline-block;
+		margin-right: 13%;
+		width: 50%;
+	}
+	
+	.searchBox #id_text {
+		width: 70%;
+		margin-right: 7%;
+	}
+	
+	.searchBox button {
+		vertical-align: middle;
+		text-decoration: none;
+		padding: 0;
+		border: none;
+		background: none;
+		cursor: pointer;
+		width: 12.5%;
+	}
+	
+	.searchBox button img {
+		width: 100%;
+		filter: invert();
+	}
+	
+	#cartIcon{
+		width: 10%;
+		display: inline-block;
+		position: relative;
+		cursor: pointer;
+		height: 100%;
+	}
+	
+	.actions .cart img {
+		width: 70%;
+		vertical-align: middle;
+		filter: invert();
+		vertical-align: middle;
+	}
+	
+	.cart #miniCartTotal {
+		background-color: #D00000;
+		position: absolute;
+		top: 7.5%;
+		right: 0%;
+		padding: 5% 10%;
+		color: #FFF;
+		text-align: center;
+		border-radius: 4px;
+	}
+	
+	.toolbarSpacer{
+		height: 7vh;
+		width: 100vw;
+		background-color:#2E5D4E;
+	}
+	
+	#miniCart {
+		position: fixed;
+		top: 0;
+		right: 0;
+		background-color: #FFF;
+		width: 25%;
+		height: 100%;
+		z-index: 3;
+		
+	}
+
+	.miniCartContent {
+		width: 100%;
+		height: 100%;
+		position: relative;
+	}
+	
+	.miniTop {
+		background-color: #2E5D4E;
+		width: 90%;
+		padding: 5%;
+		position: relative;
+		height: 10%;
+	}
+	
+	#miniCloser {
+		cursor: pointer;
+		width: 5%;
+	}
+	
+	.miniTitle {
+		color: #FFF;
+		font-size: 140%;
+		position: absolute;
+		bottom: 15%;
+		left: 5%;
+	}
+	
+	#miniCartFilter{
+		position: fixed;
+		display: none;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		background-color: rgb(0,0,0,0.6);
+		z-index: 2;
+	}
+	
+	.miniList {
+		overflow-y: scroll;
+		overflow-x: hidden;
+	}
+	
+	#miniUl {
+		margin: 0;
+		padding: 0;
+	}
+	
+	
+	#miniUl li {
+		width: 90%;
+		margin: 5%;
+	}
+	
+	#miniUl li a {
+		color: #000;
+	}
+	
+	#miniUl li a .miniImg {
+		width: 24%;
+		vertical-align: middle;
+	}
+	
+	#miniUl li a .miniCont {
+		width: 64%;
+		margin-left: 5%;
+		display: inline-block;
+		vertical-align: middle;
+		
+	}
+	
+	#miniUl li a .miniRemove {
+		width: 5%;
+		display: inline-block;
+		vertical-align: middle;
+		
+	}
+	
+	#miniUl li a .miniCont div {
+		white-space: pre;
+	}
+	
+	#miniUl li a .miniCont .miniMain {
+		font-size: 110%;
+		font-weight: bold;
+		white-space: break-spaces;
+		word-break: break-all;
+		
+	}
+	#miniUl li a .miniCont .miniMain span {
+		text-transform: capitalize;
+	}
+	
+	.miniFooter {
+		position: absolute;
+		left: 0;
+		bottom: 0;
+		padding: 5%;
+		background-color: #2E5D4E;
+		width: 89%;
+	}
+	
+	.miniFooter #miniTotal {
+		color: #FFF;
+		font-weight: bold;
+		font-size: 150%;
+	}
+	
+	.miniFooter #toCheckout {
+		cursor: pointer;
+		color: #FFF;
+		border: 2px solid #FFF;
+		text-align: center;
+		padding: 4%;
+		font-size: 120%;
+		margin-top: 3%;
+		transition-duration: 0.5s;
+	}
+	
+	.miniFooter #toCheckout:hover {
+		color: #2E5D4E;
+		border: 2px solid #FFF;
+		background-color: #FFF;
+		text-align: center;
+		padding: 4%;
+		font-size: 120%;
+		margin-top: 3%;
+		transition-duration: 0.5s;
+	}
+	
+	.fake-footer{
+		width: 90%;
+		padding: 5%;
+		margin-top: 7.5%;
+		height: 20vh;
+	}
+	
+	.footer {
+		background-color: #2E5D4E;
+		color: #FFF;
+		width: 90%;
+		padding: 5%;
+		margin-top: 7.5%;
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		height: 20vh;
+	}
+	
+	.footer .row{
+		display: inline-block;
+		vertical-align: middle;
+	}
+	
+	.footer .row ul {
+		margin: 0;
+		padding: 0;
+	}
+	
+	.footer .row ul li {
+		margin: 5% 0;
+	}
+	
+	.footer .row ul li a {
+		color: #FFF;
+		text-decoration: underline;
+	}
+}
+
+@media screen and (max-width: 720px){
+	
+	@font-face {
+		font-family: Manrope;
+		src: url('/static/fonts/Manrope-Regular.ttf');
+	}
+	
+	* {
+		font-family: Manrope;
+		transition-duration: 0.5s;
+	}
+
+	*:focus, *:active, *:focus:active, * {
+		-webkit-touch-callout: none;
+		-webkit-user-select: none;
+		-khtml-user-select: none;
+		-webkit-tap-highlight-color: transparent;
+		-moz-user-select: none;
+		-ms-user-select: none;
+		user-select: none;
+	}
+	
+	body {
+		margin: 0; 
+		max-width: 100%;
+		overflow-x: hidden;
+	}
+	
+	a {
+		text-decoration: none;
+	}
+	
+	ul {
+		list-style-type: none;
+	}
+	
+	input:focus,
+	select:focus,
+	textarea:focus,
+	button:focus, *:focus {
+		outline: none;
+	}
+	
+	.page-container {
+		position: relative;
+		min-height: 100vh;
+		overflow-x: hidden;
+	}
+	
+	.menu {
+		height:10%;
+		width: 100%;
+		position: fixed;
+		background-color:#2E5D4E;
+		z-index: 1;
+	}
+	
+	.toolbar {
+		height: 100%;
+		width: 100%;
+		position: relative;
+	}
+	
+	.helper {
+		display: inline-block;
+		height: 100%;
+		vertical-align: middle;
+	}
+	
+	#logo {
+		height: 75%;
+		vertical-align: middle;
+		margin-left: 3%;
+		cursor: pointer;
+	}
+	
+	
+	.actions {
+		position: absolute;
+		right: 0%;
+		top: 0%;
+		height: 100%;
+		width: 60%;
+	}
+	
+	.verticalSeparator {
+		height: 60%;
+		display: none;
+		vertical-align: middle;
+		border-left: 2px solid rgb(255,255,255,0.7);
+		margin-right: 15%;
+		width: 1%;
+	}
+	
+	.searchBox{
+		display: inline-block;
+		margin-right: 5%;
+		width: 70%;
+		height: 100%;
+	}
+	
+	.searchBox #id_text {
+		width: 60%;
+		margin-right: 7%;
+		line-height: 200%;
+		padding: 0 5%;
+	}
+
+	
+	.searchBox button {
+		vertical-align: middle;
+		text-decoration: none;
+		padding: 0;
+		border: none;
+		background: none;
+		cursor: pointer;
+		width: 12.5%;
+	}
+	
+	.searchBox button img {
+		width: 100%;
+		filter: invert();
+	}
+	
+	#cartIcon{
+		width: 15%;
+		display: inline-block;
+		position: relative;
+		cursor: pointer;
+		height: 100%;
+	}
+	
+	.actions .cart img {
+		width: 70%;
+		vertical-align: middle;
+		filter: invert();
+		vertical-align: middle;
+	}
+	
+	.cart #miniCartTotal {
+		background-color: #D00000;
+		position: absolute;
+		top: 7.5%;
+		right: 0%;
+		padding: 5% 10%;
+		color: #FFF;
+		text-align: center;
+		border-radius: 4px;
+	}
+	
+	.toolbarSpacer{
+		height: 10vh;
+		width: 100vw;
+		background-color:#2E5D4E;
+	}
+	
+	#miniCart {
+		position: fixed;
+		top: 0;
+		right: 0;
+		background-color: #FFF;
+		width: 65%;
+		height: 100%;
+		z-index: 3;
+		
+	}
+
+	.miniCartContent {
+		width: 100%;
+		height: 100%;
+		position: relative;
+	}
+	
+	.miniTop {
+		background-color: #2E5D4E;
+		width: 89%;
+		padding: 5%;
+		position: relative;
+		height: 10%;
+	}
+	
+	#miniCloser {
+		cursor: pointer;
+		width: 5%;
+	}
+	
+	.miniTitle {
+		color: #FFF;
+		font-size: 140%;
+		position: absolute;
+		bottom: 15%;
+		left: 5%;
+	}
+	
+	#miniCartFilter{
+		position: fixed;
+		display: none;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		background-color: rgb(0,0,0,0.6);
+		z-index: 2;
+	}
+	
+	.miniList {
+		overflow-y: scroll;
+		overflow-x: hidden;
+	}
+	
+	#miniUl {
+		margin: 0;
+		padding: 0;
+	}
+	
+	
+	#miniUl li {
+		width: 90%;
+		margin: 5%;
+	}
+	
+	#miniUl li a {
+		color: #000;
+	}
+	
+	#miniUl li a .miniImg {
+		width: 24%;
+		vertical-align: middle;
+	}
+	
+	#miniUl li a .miniCont {
+		width: 64%;
+		margin-left: 5%;
+		display: inline-block;
+		vertical-align: middle;
+		
+	}
+	
+	#miniUl li a .miniRemove {
+		width: 5%;
+		display: inline-block;
+		vertical-align: middle;
+		
+	}
+	
+	#miniUl li a .miniCont div {
+		white-space: pre;
+	}
+	
+	#miniUl li a .miniCont .miniMain {
+		font-size: 110%;
+		font-weight: bold;
+		white-space: break-spaces;
+		word-break: break-all;
+		
+	}
+	#miniUl li a .miniCont .miniMain span {
+		text-transform: capitalize;
+	}
+	
+	.miniFooter {
+		position: absolute;
+		left: 0;
+		bottom: 0;
+		padding: 5%;
+		background-color: #2E5D4E;
+		width: 90%;
+	}
+	
+	.miniFooter #miniTotal {
+		color: #FFF;
+		font-weight: bold;
+		font-size: 150%;
+		
+	}
+	
+	.miniFooter #toCheckout {
+		cursor: pointer;
+		color: #FFF;
+		border: 2px solid #FFF;
+		text-align: center;
+		padding: 4%;
+		font-size: 120%;
+		margin-top: 3%;
+		transition-duration: 0.5s;
+	}
+	
+	.miniFooter #toCheckout:hover {
+		color: #2E5D4E;
+		border: 2px solid #FFF;
+		background-color: #FFF;
+		text-align: center;
+		padding: 4%;
+		font-size: 120%;
+		margin-top: 3%;
+		transition-duration: 0.5s;
+	}
+	
+	.fake-footer{
+		width: 90%;
+		padding: 5%;
+		margin-top: 7.5%;
+		height: 20vh;
+	}
+	
+	.footer {
+		background-color: #2E5D4E;
+		color: #FFF;
+		width: 79%;
+		padding: 5% 10%;
+		margin-top: 7.5%;
+		position: absolute;
+		bottom: 0;
+		left: 0;
+	}
+	
+	.footer .row{
+		display: inline-block;
+		vertical-align: middle;
+	}
+	
+	.footer .row ul {
+		margin: 0;
+		padding: 0;
+	}
+	
+	.footer .row ul li {
+		margin: 5% 0;
+	}
+	
+	.footer .row ul li a {
+		color: #FFF;
+		text-decoration: underline;
+	}
+	
+}

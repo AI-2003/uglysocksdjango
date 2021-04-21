@@ -1,0 +1,65 @@
+@media screen and (min-width: 721px){
+    .searchTitle {
+        margin:  2.5% 5%;
+        text-transform: uppercase;
+        font-size: 200%;
+    }
+    
+    .productList {
+        max-width: 90%;
+        margin: auto;
+    }
+    
+    .product {
+        width: 17%;
+        margin: 2% 1.5%;
+        display: inline-block;
+    }
+    
+    .product img {
+        width: 100%;
+        background-color: #000;
+    }
+    
+    .product .PT .name{
+        font-size: 120%;
+        margin-bottom: 5%;
+        text-transform: capitalize;
+    }
+}
+
+@media screen and (max-width: 720px){
+    .searchTitle {
+        margin:  5% 7.5%;
+        text-transform: uppercase;
+        font-size: 200%;
+    }
+    
+    .productList {
+        max-width: 80%;
+        margin: auto;
+    }
+    
+    .product {
+        width: 34%;
+        margin: 10% 7.5%;
+        display: inline-block;
+    }
+    
+    .product img {
+        width: 100%;
+        background-color: #000;
+    }
+    
+    .product .PT .name{
+        margin-top: 5%;
+        margin-bottom: 5%;
+        text-transform: capitalize;
+    }
+
+    .product .PT .price {
+    }
+}
+
+
+

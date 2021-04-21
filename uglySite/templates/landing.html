@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/landing.css' %}">
+{% endblock extra_css %}
+
+{% block content %}
+<div class="intro">
+    <img class="waves" src="{% static 'images/waves.png' %}">
+    <img class="socks-gif" src="{% static 'images/SOCKS-GIF.gif' %}">
+    <ul>
+        <li id="li-logo"><img src="{% static 'images/white_logo-100x100.png' %}"></li>
+        <li class="title">UGLY SOCKS</li>
+        <li class="sub">Los calcetines más cool.</li>
+    </ul>
+</div>
+
+<div class="categoriesPresentation">Categorías:</div>
+<div class="categories">
+    <div class="category">
+        <div class="text">Temporal</div>
+        <div class="categoryButton" id="temporal">Click aquí</div>
+        <img src="{% static 'images/temporal.png' %}">
+    </div>
+
+    <div class="category">
+        <div class="text">LOL</div>
+        <div class="categoryButton" id="lol">Click aquí</div>
+        <img src="{% static 'images/lol.png' %}">
+    </div>
+
+    <div class="category">
+        <div class="text">Comida</div>
+        <div class="categoryButton" id="comida">Click aquí</div>
+        <img src="{% static 'images/comida.png' %}">
+    </div>
+
+    <div class="category">
+        <div class="text">Personalizados</div>
+        <div class="categoryButton" id="custom">Click aquí</div>
+        <img src="{% static 'images/custom.png' %}">
+    </div>
+</div>
+{% endblock content %}
+
+{% block extra_js %}
+<script type="text/javascript">
+    document.getElementById("temporal").onclick = function(){
+        window.location = "/category/temporal/";
+    };
+    document.getElementById("lol").onclick = function(){
+        window.location = "/category/lol/";
+    };
+    document.getElementById("comida").onclick = function(){
+        window.location = "/category/comida/";
+    };
+    document.getElementById("custom").onclick = function(){
+        window.location = "/category/custom/";
+    };
+</script>
+{% endblock extra_js %}

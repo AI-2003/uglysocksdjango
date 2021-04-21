@@ -1,0 +1,107 @@
+﻿{% load static %}
+
+<!DOCTYPE html>
+<html>
+    {% block head %}
+    <head>
+        <title>Ugly Socks</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" type="text/css" href="{% static 'css/index.css' %}">
+        {% block extra_css %}
+        {% endblock extra_css %}
+    </head>
+    {% endblock head %}
+
+    {% block body %}
+    <body>
+
+        <div class="page-container" id="page-container">
+            {% block toolbar %}
+            <div class="menu">
+                <div class="toolbar">
+                    <span class="helper"></span>
+                    <img id="logo" src="{% static 'images/white_logo-100x100.png' %}">
+
+                    <div class="actions">
+                        <div class="verticalSeparator"></div>
+
+                        <form class="searchBox" method="POST">
+                            {% csrf_token %}
+                            {{form}}
+
+                            <button type="submit">
+                                <img src="{% static 'images/lupa.svg' %}">
+                            </button>
+                        </form>
+
+                        <div id="cartIcon" class="cart">
+                            <span class="helper"></span>
+                            <img  src="{% static 'images/carro.svg' %}">
+                            <div id="miniCartTotal"></div>
+                        </div>
+
+                        <div id="miniCartFilter" display="none"></div>
+
+                        <div id="miniCart" style="display: block;">
+                            <div class="miniCartContent">
+                                <div class="miniTop">
+                                    <img id="miniCloser" src="{% static 'images/close.svg' %}">
+                                    <div class="miniTitle">Carrito: </div>
+                                </div>
+                                
+                                <div class="miniList">
+                                    <ul id="miniUl">
+                                    </ul>
+                                </div>
+
+                                <div class="miniFooter">
+                                    <div id="miniTotal"></div>
+                                    <div id="toCheckout">Proceder al pago.</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <span class="helper"></span>
+                    </div>
+                </div>
+
+
+                
+            </div>
+
+            <div class="toolbarSpacer"></div>
+            {% endblock toolbar %}
+
+            {% block content %}
+            {% endblock content %}
+
+            {% block footer %}
+            <div class="footer" id="real-footer">
+                <span class="helper"></span>
+                <div class="row">
+                    <ul>
+                        <li>Si tienes alguna duda, escríbenos a <a href="mailto:contacto@ibarraransoftware.com">contacto@ibarraransoftware.com</a></li>
+                        <li><a href="{% url 'shipping' %}">Acerca de los envíos.</a></li>
+                        <li><a href="{% url 'policy' %}">Política de privacidad.</a></li>
+                        <li><a href="{% url 'madeby' %}">Hecho por...</a></li>
+                    <ul>
+                </div>
+            </div>
+            <div class="fake-footer" id="fake-footer"></div>
+            {% endblock footer %}
+        </div>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.1/gsap.min.js"></script>
+        <script type="text/javascript" src="{% static 'js/base.js' %}"></script>
+        <script type="text/javascript">
+            document.getElementById("logo").onclick = function(){
+                window.location = "{% url 'landing' %}";
+            };
+        </script>
+
+        {% block extra_js %}
+        {% endblock extra_js %}
+
+    </body>
+    {% endblock body %}
+</html>
