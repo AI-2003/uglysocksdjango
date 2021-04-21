@@ -24,6 +24,9 @@ stripe.api_key = "sk_test_0q9BNL8DVS1X1xS1u46YyA1M00RmBsmehw"
 
 # Create your views here.
 
+
+#Easter egg
+
 def loadCustom(request, ID):
     try:
         image = CustomImage.objects.get(uuid=uuid.UUID(ID))
